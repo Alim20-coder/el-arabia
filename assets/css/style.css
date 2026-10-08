@@ -217,17 +217,23 @@ img, video {
 
 /* Header & Navigation (Matches Screenshot 6) */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(7, 11, 20, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(7, 11, 20, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
   z-index: 1000;
-  transition: var(--transition);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
+
+.header.scrolled {
+  background: rgba(7, 11, 20, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(223, 162, 67, 0.15);
+}
+
 
 .header-container {
   display: flex;
@@ -322,47 +328,79 @@ img, video {
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  right: 50%;
-  transform: translateX(50%) translateY(10px);
-  background: var(--bg-card);
+  top: calc(100% + 10px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) translateY(10px) scale(0.96);
+  transform-origin: top center;
+  background: rgba(13, 18, 28, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 0.8rem;
-  min-width: 250px;
-  box-shadow: var(--shadow-card), var(--gold-glow);
+  padding: 0.85rem;
+  min-width: 480px;
+  max-width: 90vw;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(223, 162, 67, 0.18);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: var(--transition);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s ease;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
   z-index: 1010;
 }
 
-.nav-item-dropdown:hover .dropdown-menu {
+/* سهم أنيق أعلى القائمة في المنتصف */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: rgba(13, 18, 28, 0.98);
+  border-top: 1px solid var(--border-gold);
+  border-left: 1px solid var(--border-gold);
+}
+
+/* فتح القائمة من النص عند التمرير بالماوس أو عند الضغط (active) */
+.nav-item-dropdown:hover .dropdown-menu,
+.nav-item-dropdown.active .dropdown-menu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(50%) translateY(0);
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 .dropdown-link {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0.9rem;
+  justify-content: center;     /* ✅ توسيط الأيقونة والنص في المنتصف */
+  text-align: center;         /* ✅ نص الرابط في المنتصف */
+  gap: 0.6rem;
+  padding: 0.65rem 0.9rem;
   color: var(--text-main);
   font-size: 0.88rem;
+  font-weight: 500;
   border-radius: var(--radius-sm);
-  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .dropdown-link:hover {
-  background: rgba(223, 162, 67, 0.12);
+  background: rgba(223, 162, 67, 0.15);
+  border-color: rgba(223, 162, 67, 0.4);
   color: var(--gold-light);
-  padding-right: 1.1rem;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(223, 162, 67, 0.2);
 }
 
 .header-actions {
@@ -2340,39 +2378,82 @@ textarea.form-control {
 
 /* Mobile responsive menu */
 @media (max-width: 992px) {
+
+  /* ✅ تعويض الهيدر الثابت */
+  body {
+    padding-top: 70px;
+  }
+
+  /* ✅ القائمة تنزل من أعلى بعرض كامل */
   .nav-menu {
     position: fixed;
     top: 70px;
-    right: -100%;
-    width: 280px;
-    height: calc(100vh - 70px);
-    background: var(--bg-card);
-    border-right: 1px solid var(--border-gold);
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    height: auto;
+    background: rgba(7, 11, 20, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-gold);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem 1.5rem;
-    gap: 1rem;
-    transition: right 0.3s ease;
+    align-items: center;          /* ✅ توسيط في المنتصف */
+    justify-content: flex-start;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
     overflow-y: auto;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.7);
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
   }
 
   .nav-menu.active {
-    right: 0;
+    max-height: calc(100vh - 70px);
+    padding: 1.2rem 0 2rem;
+  }
+
+  /* ✅ روابط الناف توسيط */
+  .nav-menu > li {
+    width: 100%;
+    text-align: center;
   }
 
   .nav-link {
     flex-direction: row;
-    gap: 0.8rem;
+    justify-content: center;      /* ✅ النص في النص */
+    gap: 0.6rem;
     width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-radius: 0;
   }
 
+  .nav-link:hover, .nav-link.active {
+    background: rgba(223, 162, 67, 0.08);
+  }
+
+  /* ✅ الدروب داون داخل الموبايل */
   .dropdown-menu {
     position: static;
-    transform: none;
+    transform: none !important;
     box-shadow: none;
     border: none;
-    padding-right: 1.5rem;
+    border-top: 1px solid rgba(223, 162, 67, 0.2);
+    border-bottom: 1px solid rgba(223, 162, 67, 0.2);
+    border-radius: 12px;
+    margin: 0.6rem auto;
+    padding: 0.6rem 0.8rem;
+    display: none;
+    background: rgba(13, 21, 37, 0.7);
+    width: 92%;
+    max-width: 450px;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .dropdown-menu::before {
     display: none;
   }
 
@@ -2380,12 +2461,47 @@ textarea.form-control {
     display: grid;
     opacity: 1;
     visibility: visible;
+    animation: fadeInDropdown 0.28s ease;
+  }
+
+  @keyframes fadeInDropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ✅ روابط الخدمات في النص */
+  .dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;       /* ✅ توسيط كل رابط */
+    text-align: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.92rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .dropdown-link:hover {
+    padding-right: 1rem;           /* override desktop indent */
+    background: rgba(223, 162, 67, 0.15);
+    border-color: rgba(223, 162, 67, 0.4);
+    color: var(--gold-light);
+    transform: none;
   }
 
   .mobile-toggle {
     display: block;
   }
 }
+
 
 
 .why-us-section {
@@ -2472,13 +2588,36 @@ textarea.form-control {
   text-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-service-card::after {
+  content: '←';
+  position: absolute;
+  bottom: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  font-size: 0.75rem;
+  color: var(--gold-primary);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.featured-service-card:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .featured-service-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(223, 162, 67, 0.4);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(223, 162, 67, 0.15);
+  border-color: rgba(223, 162, 67, 0.55);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(223, 162, 67, 0.2);
+  background: #1e2d45;
 }
+
 
 .featured-service-icon {
   width: 42px;

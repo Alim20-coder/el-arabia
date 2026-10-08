@@ -9,14 +9,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Dropdown Click Handler
+  // Dropdown Click Handler (Desktop + Mobile)
   const dropdownItems = document.querySelectorAll('.nav-item-dropdown');
   dropdownItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      if (window.innerWidth <= 992) {
+    const triggerLink = item.querySelector('.nav-link');
+    if (triggerLink) {
+      triggerLink.addEventListener('click', (e) => {
+        e.preventDefault(); // منع القفز إلى #services
+        e.stopPropagation();
+
+        // إغلاق أي قوائم منسدلة أخرى مفتوحة
+        dropdownItems.forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+
+        // فتح / إغلاق القائمة من النص عند الضغط
         item.classList.toggle('active');
-      }
-    });
+      });
+    }
+
+    // التعامل مع روابط الخدمات داخل القائمة
+    const dropdownMenu = item.querySelector('.dropdown-menu');
+    if (dropdownMenu) {
+      dropdownMenu.addEventListener('click', (e) => {
+        const clickedLink = e.target.closest('.dropdown-link');
+        if (clickedLink) {
+          // عند الضغط على أي خدمة يتم إغلاق القائمة بعد التنقل
+          if (window.innerWidth <= 992 && navMenu) {
+            navMenu.classList.remove('active');
+          }
+          item.classList.remove('active');
+        } else {
+          e.stopPropagation();
+        }
+      });
+    }
+  });
+
+  // إغلاق القائمة عند النقر خارجها في أي مكان بالصفحة
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      dropdownItems.forEach(item => item.classList.remove('active'));
+    }
   });
 
   // Accordion (FAQ - Matches Screenshot 10)
