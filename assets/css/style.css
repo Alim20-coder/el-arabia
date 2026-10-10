@@ -2832,3 +2832,113 @@ textarea.form-control {
 }
 
 
+
+/* Fix inline grid used in service showcase (Real Work Highlight) */
+@media (max-width: 768px) {
+
+  /* Service pages Real Work Highlight: force single column */
+  .service-showcase-grid,
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Image height adjustment when stacked */
+  [style*="grid-template-columns: 1fr 1fr"] > div[style*="min-height"] {
+    min-height: 230px !important;
+  }
+
+  /* Text padding when stacked */
+  [style*="grid-template-columns: 1fr 1fr"] > div[style*="padding: 2.5rem"] {
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* Hero section mobile: reduce padding & fix text size */
+  .hero {
+    padding: 5rem 1rem 4rem;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 7vw, 2.6rem);
+    line-height: 1.3;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  /* Stack hero buttons on mobile */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Feature box: stack icon above text on mobile */
+  .feature-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Timeline left padding smaller on mobile */
+  .timeline-list::before {
+    right: 8px;
+  }
+
+  .timeline-item {
+    padding-right: 40px;
+  }
+
+  .timeline-node {
+    right: 0;
+  }
+
+  /* Values grid single column */
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+  }
+
+  /* Featured services 2 cols on tablet */
+  .featured-services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4.5rem 0.8rem 3rem;
+  }
+
+  /* Single column for featured services on small phones */
+  .featured-services-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+  }
+
+  /* Tighten vertical section spacing on small screens */
+  .methodology-section,
+  .timeline-section,
+  .services-section {
+    padding: 3.5rem 0;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.92rem;
+  }
+}
+

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كشف تسربات المياه وإصلاحها الكويت | الشركة العربية للمنازل ذ.م.م</title>
+  <meta name="description" content="كشف تسربات المياه وإصلاحها بدون تكسير في الكويت - أجهزة حديثة لكشف خرير المياه والرطوبة والتسربات الخفية في الحوائط والأسقف والأرضيات. اتصل: 65600310">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+  <style>
+    @keyframes drip {
+      0%   { transform: translateY(-8px); opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translateY(18px); opacity: 0; }
+    }
+    @keyframes ripple {
+      0%   { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .water-hero-anim {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1.5rem;
+    }
+    .water-hero-anim .ripple-ring {
+      position: absolute;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 2px solid rgba(56, 182, 255, 0.45);
+      animation: ripple 2s cubic-bezier(0.4,0,0.2,1) infinite;
+    }
+    .water-hero-anim .ripple-ring:nth-child(2) { animation-delay: 0.7s; }
+    .water-hero-anim .ripple-ring:nth-child(3) { animation-delay: 1.4s; }
+    .water-hero-anim .drop-icon {
+      position: relative; z-index: 2;
+      font-size: 2.8rem;
+      animation: drip 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 12px rgba(56,182,255,0.6));
+    }
+    @keyframes soundBar {
+      from { transform: scaleY(0.4); opacity: 0.5; }
+      to   { transform: scaleY(1);   opacity: 1; }
+    }
+    .sound-wave-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 28px;
+      margin: 0 auto 0.4rem;
+      justify-content: center;
+    }
+    .sound-bar {
+      width: 4px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, #38b6ff, #1a6bff);
+      animation: soundBar 1.2s ease-in-out infinite alternate;
+    }
+    .sound-bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+    .sound-bar:nth-child(2) { height: 20px; animation-delay: 0.15s; }
+    .sound-bar:nth-child(3) { height: 28px; animation-delay: 0.3s; }
+    .sound-bar:nth-child(4) { height: 20px; animation-delay: 0.45s; }
+    .sound-bar:nth-child(5) { height: 10px; animation-delay: 0.6s; }
+
+    /* Service highlight grid - responsive */
+    .service-highlight-grid {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      box-shadow: var(--shadow-card);
+    }
+    .service-highlight-img {
+      position: relative;
+      min-height: 380px;
+    }
+    .service-highlight-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .service-highlight-text {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .service-highlight-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-highlight-img {
+        min-height: 240px;
+      }
+      .service-highlight-text {
+        padding: 1.8rem 1.4rem;
+      }
+    }
+
+    /* Leak problem cards */
+    .leak-problems-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) {
+      .leak-problems-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .leak-problems-grid { grid-template-columns: 1fr; }
+    }
+    .leak-problem-card {
+      background: linear-gradient(135deg, rgba(18,27,47,0.9), rgba(10,18,36,0.95));
+      border: 1px solid rgba(56,182,255,0.2);
+      border-radius: 16px;
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .leak-problem-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(56,182,255,0.08) 0%, transparent 70%);
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .leak-problem-card:hover { border-color: rgba(56,182,255,0.5); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 20px rgba(56,182,255,0.15); }
+    .leak-problem-card:hover::before { opacity: 1; }
+    .leak-problem-icon { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; }
+    .leak-problem-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .leak-problem-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Detection methods */
+    .detect-methods-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 700px) {
+      .detect-methods-grid { grid-template-columns: 1fr; }
+    }
+    .detect-method-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 1.6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: var(--transition);
+    }
+    .detect-method-card:hover { border-color: var(--border-gold); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .detect-method-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(56,182,255,0.1);
+      border: 1px solid rgba(56,182,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.5rem;
+    }
+    .detect-method-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .detect-method-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* Promise badges */
+    .promise-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .promise-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 50px;
+      background: rgba(56,182,255,0.08);
+      border: 1px solid rgba(56,182,255,0.3);
+      color: #7dd4fc;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .blue-text {
+      background: linear-gradient(135deg, #7dd4fc 0%, #38b6ff 50%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-contacts">
+    <a href="tel:65600310" class="floating-btn floating-phone" title="اتصل بنا: 65600310">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+    <a href="https://wa.me/96565600310?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%83%D8%B4%D9%81%20%D8%AA%D8%B3%D8%B1%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D9%8A%D8%A7%D9%87" target="_blank" class="floating-btn floating-whatsapp" title="واتساب كشف تسربات">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.83 14.28c-.24.69-1.42 1.32-1.97 1.38-.5.06-1.12.08-3.62-.95-3.08-1.28-5.07-4.41-5.23-4.62-.15-.21-1.25-1.66-1.25-3.17 0-1.51.79-2.26 1.07-2.56.28-.3.62-.37.83-.37.21 0 .41.01.59.02.19.01.44-.07.69.52.25.6.86 2.1.94 2.25.08.15.13.33.03.54-.1.21-.15.34-.3.51-.15.17-.32.39-.46.52-.15.15-.31.31-.13.62.18.31.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.46 1.52.31.15.49.13.67-.08.18-.21.78-.91.99-1.22.21-.31.41-.26.69-.15.28.1 1.79.84 2.1 1 .31.15.51.23.59.36.08.13.08.77-.16 1.46z"/></svg>
+    </a>
+  </div>
+
+  <header class="header">
+    <div class="header-container">
+      <a href="../index.html" class="logo-brand">
+        <div class="logo-badge">ع</div>
+        <div class="logo-text">
+          <span class="logo-title">الشركة العربية للمنازل</span>
+          <span class="logo-subtitle">للتجارة العامة والمقاولات ذ.م.م</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">الرئيسية</a></li>
+          <li class="nav-item-dropdown"><a href="../index.html#services" class="nav-link active">الخدمات ▾</a>
+            <div class="dropdown-menu">
+              <a href="interior-design.html" class="dropdown-link">🛋️ التصميم الداخلي</a>
+              <a href="finishing.html" class="dropdown-link">👷 تشطيب داخلي الكويت</a>
+              <a href="painting.html" class="dropdown-link">🎨 صباغ الكويت</a>
+              <a href="gypsum-board.html" class="dropdown-link">🧱 جبس بورد الكويت</a>
+              <a href="wallpaper.html" class="dropdown-link">📜 ورق جدران الكويت</a>
+              <a href="melamine-wood.html" class="dropdown-link">🚪 خشب ملامين الكويت</a>
+              <a href="carpenter.html" class="dropdown-link">🔨 نجار الكويت</a>
+              <a href="marble.html" class="dropdown-link">💎 الرخام الإيطالي</a>
+              <a href="alternatives.html" class="dropdown-link">📑 بديل الخشب والرخام</a>
+              <a href="ceramics-parquet.html" class="dropdown-link">🔲 سيراميك وباركيه</a>
+              <a href="dewaniya.html" class="dropdown-link">👥 تصميم ديوانية</a>
+              <a href="reception-halls.html" class="dropdown-link">🏕️ صالات استقبال خارجية</a>
+              <a href="roof-insulation.html" class="dropdown-link">🏠 عزل أسطح الكويت</a>
+              <a href="water-leak.html" class="dropdown-link">💧 كشف تسربات المياه</a>
+            </div>
+          </li>
+          <li><a href="../projects.html" class="nav-link">المشاريع</a></li>
+          <li><a href="../prices.html" class="nav-link">الأسعار</a></li>
+          <li><a href="../about.html" class="nav-link">من نحن</a></li>
+          <li><a href="../contact.html" class="nav-link">اتصل بنا</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:65600310" class="btn-header-call"><span>65600310</span></a>
+        <button class="mobile-toggle" aria-label="القائمة"><svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="water-hero-anim">
+        <div class="ripple-ring"></div>
+        <div class="ripple-ring"></div>
+        <div class="ripple-ring"></div>
+        <span class="drop-icon">💧</span>
+      </div>
+      <div class="pill-badge"><span>كشف دقيق بدون تكسير &bull; إصلاح فوري &bull; ضمان مكتوب</span></div>
+      <h1 class="hero-title"><span class="blue-text">كشف تسربات المياه وخرير الأنابيب</span></h1>
+      <p class="hero-description">
+        نكشف تسربات المياه المخفية في الحوائط والأسقف والأرضيات باستخدام أحدث أجهزة الكشف الإلكترونية بدون تكسير أو هدم. خبرة 20 عاماً في معالجة التسربات والرطوبة وخرير المياه في الكويت بضمان موثق.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:65600310" class="btn btn-gold">اتصل لكشف فوري: 65600310</a>
+        <a href="https://wa.me/96565600310?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%83%D8%B4%D9%81%20%D8%AA%D8%B3%D8%B1%D8%A8%20%D9%85%D9%8A%D8%A7%D9%87" target="_blank" class="btn btn-outline">تواصل واتساب الآن</a>
+      </div>
+      <div style="margin-top: 2rem;">
+        <div class="sound-wave-row">
+          <div class="sound-bar"></div>
+          <div class="sound-bar"></div>
+          <div class="sound-bar"></div>
+          <div class="sound-bar"></div>
+          <div class="sound-bar"></div>
+        </div>
+        <p style="color: rgba(125,212,252,0.7); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;">جهاز الاستماع الإلكتروني لكشف خرير المياه</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Work Highlight -->
+  <section class="container" style="margin-bottom: 3.5rem;">
+    <div class="service-highlight-grid">
+      <div class="service-highlight-img">
+        <img src="../assets/css/p (8).jpeg" alt="كشف تسربات مياه بأجهزة متطورة - من أعمال الشركة العربية">
+      </div>
+      <div class="service-highlight-text">
+        <span class="pill-badge" style="background: rgba(56,182,255,0.1); border-color: rgba(56,182,255,0.35); color: #7dd4fc; width: fit-content;">كشف دقيق بدون هدم أو تكسير</span>
+        <h3 style="font-size: 1.55rem; color: #fff; margin-bottom: 1rem; line-height: 1.45; margin-top: 0.8rem;">إيجاد التسرب في 30 دقيقة بتقنية الموجات الصوتية</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.2rem;">
+          باستخدام جهاز Correlator الإلكتروني وجهاز الاستماع الأرضي، نحدد موقع خرير المياه والتسرب بدقة سنتيمترية دون الحاجة لكسر الجدران أو فتح الأسقف. بعد الكشف نقدم عرضاً للإصلاح بضمان كتابي.
+        </p>
+        <div class="promise-row" style="justify-content: flex-start; margin-top: 0; margin-bottom: 1.5rem;">
+          <span class="promise-badge">✅ بدون تكسير</span>
+          <span class="promise-badge">⚡ نتيجة خلال 30 دقيقة</span>
+          <span class="promise-badge">📋 تقرير مكتوب</span>
+        </div>
+        <a href="https://wa.me/96565600310?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%83%D8%B4%D9%81%20%D8%AA%D8%B3%D8%B1%D8%A8%20%D9%85%D9%8A%D8%A7%D9%87%20%D8%A8%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9" target="_blank" class="btn btn-gold" style="width: fit-content;">احجز كشفاً مجانياً الآن</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leak Problems Section -->
+  <section class="methodology-section">
+    <div class="container">
+      <h2 class="section-title">أنواع التسربات التي نكشفها ونعالجها</h2>
+      <p class="section-subtitle">نتعامل مع جميع أنواع مشاكل المياه في المنازل والفلل والمباني التجارية في الكويت.</p>
+      <div class="leak-problems-grid">
+        <div class="leak-problem-card">
+          <span class="leak-problem-icon">🏠</span>
+          <div class="leak-problem-title">تسربات السطح والخزان</div>
+          <div class="leak-problem-desc">تسرب المياه من خزان الأسطح أو من الملحق السطحي إلى السقف الداخلي مع ظهور بقع رطوبة.</div>
+        </div>
+        <div class="leak-problem-card">
+          <span class="leak-problem-icon">🚿</span>
+          <div class="leak-problem-title">تسربات الحمامات والمطابخ</div>
+          <div class="leak-problem-desc">تسرب من صواني الدش والبانيو والمغاسل وأنابيب الصرف المخفية في الجدران والأرضيات.</div>
+        </div>
+        <div class="leak-problem-card">
+          <span class="leak-problem-icon">🔧</span>
+          <div class="leak-problem-title">خرير الأنابيب الداخلية</div>
+          <div class="leak-problem-desc">صوت خرير مياه داخل الجدران أو الأسقف ناتج عن تشقق الأنابيب أو تآكلها بفعل الضغط العالي.</div>
+        </div>
+        <div class="leak-problem-card">
+          <span class="leak-problem-icon">💦</span>
+          <div class="leak-problem-title">رطوبة وتعرق الجدران</div>
+          <div class="leak-problem-desc">رطوبة مزمنة وتعرق في الجدران أو الأسقف مع تقشر الدهان وظهور فطريات وعفن.</div>
+        </div>
+        <div class="leak-problem-card">
+          <span class="leak-problem-icon">🏊</span>
+          <div class="leak-problem-title">تسربات المسبح والخزانات</div>
+          <div class="leak-problem-desc">انخفاض منسوب مياه المسبح أو الخزانات الأرضية مع كشف موقع التشقق بدقة كاملة.</div>
+        </div>
+        <div class="leak-problem-card">
+          <span class="leak-problem-icon">🌊</span>
+          <div class="leak-problem-title">تسربات شبكة الري الخارجية</div>
+          <div class="leak-problem-desc">تسريب أنابيب الحديقة والري تحت الأرض مع تراكم مياه الصرف في الممرات الخارجية.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detection Methods -->
+  <section style="padding: 5rem 0; background-color: #080d18; border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <h2 class="section-title">تقنياتنا المتطورة للكشف بدون تكسير</h2>
+      <p class="section-subtitle">نستخدم أحدث المعدات الإلكترونية الأوروبية للكشف عن التسربات بدقة عالية وبدون إزالة أي ديكور.</p>
+      <div class="detect-methods-grid">
+        <div class="detect-method-card">
+          <div class="detect-method-icon-wrap">🎧</div>
+          <div>
+            <div class="detect-method-title">جهاز الاستماع الإلكتروني (Acoustic Detector)</div>
+            <div class="detect-method-desc">يكشف عن صوت خرير المياه المنقولة عبر الأنابيب والجدران بحساسية عالية جداً، يحدد الموقع بدقة دون لمس السطح.</div>
+          </div>
+        </div>
+        <div class="detect-method-card">
+          <div class="detect-method-icon-wrap">📡</div>
+          <div>
+            <div class="detect-method-title">جهاز Correlator لتقاطع التسربات</div>
+            <div class="detect-method-desc">يُحدد موقع التسرب بالتقاطع الإلكتروني بين نقطتين من الشبكة بدقة سنتيمترية، مثالي للأنابيب المدفونة.</div>
+          </div>
+        </div>
+        <div class="detect-method-card">
+          <div class="detect-method-icon-wrap">🌡️</div>
+          <div>
+            <div class="detect-method-title">كاميرا الحرارة الحرارية (Thermal Imaging)</div>
+            <div class="detect-method-desc">تصوير حراري يكشف مناطق الرطوبة والتسرب خلف الجدران من خلال فرق درجة الحرارة دون أي تدمير.</div>
+          </div>
+        </div>
+        <div class="detect-method-card">
+          <div class="detect-method-icon-wrap">💨</div>
+          <div>
+            <div class="detect-method-title">ضخ الغاز الخامل (Tracer Gas)</div>
+            <div class="detect-method-desc">ضخ غاز الهيدروجين غير الضار في الشبكة وتتبع موقع تسربه بجهاز الاستشعار لكشف التسربات الدقيقة جداً.</div>
+          </div>
+        </div>
+        <div class="detect-method-card">
+          <div class="detect-method-icon-wrap">📷</div>
+          <div>
+            <div class="detect-method-title">كاميرا التفتيش الداخلي للأنابيب</div>
+            <div class="detect-method-desc">كاميرا مرنة مزودة بإضاءة LED تدخل داخل الأنبوب لفحص الشقوق والتآكل والانسداد بالضبط.</div>
+          </div>
+        </div>
+        <div class="detect-method-card">
+          <div class="detect-method-icon-wrap">🔍</div>
+          <div>
+            <div class="detect-method-title">اختبار ضغط الأنابيب</div>
+            <div class="detect-method-desc">اختبار مقاومة الشبكة للضغط لتحديد انخفاض الضغط الدال على تسرب وقياس مستواه بدقة.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features (Why Choose Us) -->
+  <section class="methodology-section">
+    <div class="container">
+      <h2 class="section-title">لماذا تختار الشركة العربية لكشف التسربات؟</h2>
+      <p class="section-subtitle">نجمع بين الخبرة الطويلة والتقنيات الحديثة لنقدم أدق وأسرع خدمة كشف تسربات في الكويت.</p>
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-box-icon">⚡</div>
+          <div class="feature-box-content">
+            <h4>استجابة فورية 24 ساعة</h4>
+            <p>فريقنا متاح على مدار الساعة في جميع أيام الأسبوع للحالات الطارئة وتسربات المياه الحادة.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-icon">🔬</div>
+          <div class="feature-box-content">
+            <h4>أجهزة كشف ألمانية متخصصة</h4>
+            <p>نستخدم أجهزة SEWERIN وRothenberger الألمانية المعتمدة عالمياً للحصول على نتائج مضمونة وموثوقة.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-icon">🏠</div>
+          <div class="feature-box-content">
+            <h4>صفر تكسير وصفر فوضى</h4>
+            <p>الكشف الإلكتروني بدون هدم أو تكسير في الجدران والأسقف مع ضمان الحفاظ على الديكور والتشطيب.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-icon">📋</div>
+          <div class="feature-box-content">
+            <h4>تقرير كشف مفصل مكتوب</h4>
+            <p>نقدم تقريراً مفصلاً بموقع التسرب وسببه ونوصي بأفضل طريقة للإصلاح مع تقدير التكلفة.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-icon">🛡️</div>
+          <div class="feature-box-content">
+            <h4>ضمان مكتوب على الإصلاح</h4>
+            <p>جميع أعمال الإصلاح مضمونة كتابياً لمدة سنة كاملة مع إعادة الكشف مجاناً في حال تكرار المشكلة.</p>
+          </div>
+        </div>
+      </div>
+      <div class="promise-row" style="margin-top: 1rem;">
+        <span class="promise-badge">💧 جميع مناطق الكويت</span>
+        <span class="promise-badge">🏗️ فلل وشقق ومباني تجارية</span>
+        <span class="promise-badge">✅ ضمان سنة كاملة</span>
+        <span class="promise-badge">📞 طوارئ 24/7</span>
+        <span class="promise-badge">🔬 أجهزة ألمانية معتمدة</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="timeline-section">
+    <div class="container">
+      <h2 class="section-title">كيف نكشف ونعالج التسرب؟</h2>
+      <div class="timeline-list">
+        <div class="timeline-item"><div class="timeline-node"></div><h3 class="timeline-title">1. الاتصال والتشخيص الأولي عن بُعد</h3><p class="timeline-desc">نستمع لوصفك لمشكلة المياه ونطرح أسئلة تشخيصية لتحديد نوع التسرب المحتمل وتجهيز الجهاز المناسب قبل الزيارة.</p></div>
+        <div class="timeline-item"><div class="timeline-node"></div><h3 class="timeline-title">2. زيارة الموقع وفحص الأجهزة الإلكترونية</h3><p class="timeline-desc">يصل الفني المتخصص بالأجهزة ويبدأ الفحص بمنهجية من نقطة الاتصال الرئيسية باتجاه مناطق الاشتباه.</p></div>
+        <div class="timeline-item"><div class="timeline-node"></div><h3 class="timeline-title">3. تحديد موقع التسرب بدقة</h3><p class="timeline-desc">نحدد الموقع الدقيق للتسرب بالسنتيمتر ونضع علامة واضحة على الجدار أو الأرضية مع تصوير النتيجة.</p></div>
+        <div class="timeline-item"><div class="timeline-node"></div><h3 class="timeline-title">4. تقرير مفصل وعرض الإصلاح</h3><p class="timeline-desc">نقدم تقريراً مكتوباً يشمل سبب التسرب وموقعه وعرض سعر محدد لإصلاحه بأقل تدخل ممكن.</p></div>
+        <div class="timeline-item"><div class="timeline-node"></div><h3 class="timeline-title">5. الإصلاح والعزل والضمان المكتوب</h3><p class="timeline-desc">تنفيذ الإصلاح باستخدام مواد عزل مياه عالية الجودة مع تسليم شهادة ضمان كتابية لمدة سنة كاملة.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section style="padding: 5rem 0; border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <h2 class="section-title">أسئلة شائعة عن كشف التسربات</h2>
+      <div style="max-width: 780px; margin: 2.5rem auto 0;">
+        <div class="faq-card">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              كم يستغرق الكشف عن التسرب؟
+              <svg class="accordion-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-content">في أغلب الحالات يستغرق الكشف من 30 إلى 60 دقيقة حسب حجم المساحة وتعقيد شبكة الأنابيب. التسربات الواضحة قد تُكشف في 15 دقيقة فقط.</div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              هل يوجد فتح في الجدران أثناء الكشف؟
+              <svg class="accordion-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-content">لا، الكشف يتم بالكامل بدون أي تكسير أو فتح. نستخدم الأجهزة الإلكترونية التي تستشعر صوت المياه وحرارتها من خلال الجدران والأرضيات بدون لمسها.</div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              ما تكلفة كشف التسرب؟
+              <svg class="accordion-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-content">رسوم الكشف تحدد حسب نوع الجهاز المستخدم وحجم المساحة. إذا اتفقنا على الإصلاح معنا تُحسب رسوم الكشف ضمن تكلفة الإصلاح. اتصل للحصول على سعر محدد: 65600310</div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              هل تعملون في حالات الطوارئ؟
+              <svg class="accordion-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-content">نعم، نحن متاحون للطوارئ على مدار 24 ساعة وفي جميع أيام الأسبوع بما فيها العطل الرسمية لتسربات المياه الحادة والطارئة.</div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              هل تعملون في جميع مناطق الكويت؟
+              <svg class="accordion-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-content">نعم، نصل لجميع مناطق الكويت: العاصمة، حولي، الفروانية، مبارك الكبير، الأحمدي، الجهراء، السالمية، الرميثية وجميع المناطق الأخرى.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container" style="padding: 2rem 1.5rem 5rem;">
+    <div class="projects-featured-card" style="margin-bottom: 0; border-color: rgba(56,182,255,0.3);">
+      <h3>🔧 هل تسمع خرير مياه أو تلاحظ رطوبة في جدرانك؟</h3>
+      <p>لا تؤجل! كل يوم تأخير يعني ضرراً أكبر في التشطيب والبنية. فريقنا جاهز للوصول إليك اليوم في أي منطقة بالكويت.</p>
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <a href="tel:65600310" class="btn btn-gold">اتصل الآن: 65600310</a>
+        <a href="https://wa.me/96565600310" target="_blank" class="btn btn-outline">واتساب طوارئ 24/7</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>جميع الحقوق محفوظة &copy; 2004 - 2026 الشركة العربية للمنازل للتجارة العامة والمقاولات ذ.م.م</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
